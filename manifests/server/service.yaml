@@ -1,0 +1,26 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: graceful-service
+  annotations:
+    cloud.google.com/neg: '{"ingress": true}'
+spec:
+  type: NodePort
+  selector:
+    app: graceful
+  ports:
+  - protocol: TCP
+    port: 8080
+    targetPort: 8080
+...
+---
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: graceful-lb
+  annotations:
+    kubernetes.io/ingress.global-static-ip-name: graceful-test-server
+spec:
+  backend:
+    serviceName: graceful-service
+    servicePort: 8080

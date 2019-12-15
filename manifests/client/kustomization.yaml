@@ -1,0 +1,6 @@
+commonLabels:
+  app: graceful-cl
+namespace: gracefulclient
+resources:
+- ns.yaml
+- deployment.yaml

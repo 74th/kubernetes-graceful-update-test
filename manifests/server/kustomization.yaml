@@ -1,0 +1,7 @@
+commonLabels:
+  app: graceful
+namespace: gracefulserver
+resources:
+- ns.yaml
+- deployment.yaml
+- service.yaml

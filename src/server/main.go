@@ -22,6 +22,9 @@ func main() {
 		fmt.Fprintf(w, "Hello %s", num)
 		log.Print("done")
 	})
+	http.HandleFunc("/healthz", func(w http.ResponseWriter, r *http.Request) {
+		fmt.Fprintf(w, "ok")
+	})
 
 	log.Fatal(http.ListenAndServe(":8080", nil))
 }
