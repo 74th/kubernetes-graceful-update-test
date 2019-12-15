@@ -1,2 +1,5 @@
 src/server/server
 src/client/locustfile.pyc
+*.tfstate
+*.tfstate.backup
+.terraform
