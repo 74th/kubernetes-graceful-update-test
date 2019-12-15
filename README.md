@@ -7,6 +7,25 @@
   - preStopが実行されたと同時に、LoadBalancerからの新しいリクエストを受け付けなくなる
   - 10秒の待機時間の間に、処理中のリクエストを処理する
 
+```
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: graceful-deployment
+spec:
+  replicas: 8
+  template:
+    spec:
+      containers:
+      - name: graceful
+        lifecycle:
+          preStop:
+            exec:
+              command:
+                - "/bin/sleep"
+                - "10"
+```
+
 ## 検証環境
 
 - Google Kubernetes Engine を用いる
